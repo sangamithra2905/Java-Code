@@ -1,0 +1,32 @@
+import java.util.*;
+public class Main
+{
+    static int gcm(int a,int b){
+        if(b==0){
+            return a;
+        }
+        else{
+            return gcm(b,a%b);
+        }
+    }
+    static int lcm(int a,int b){
+        return (a*b) / gcm(a,b);
+    }
+    static int findlcm(int arr[]){
+        int result = arr[0];
+        for(int i=1;i<arr.length;i++){
+            result = lcm(result,arr[i]);
+        }
+        return result;
+    }
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        for(int i=0;i<n;i++){
+            arr[i] = sc.nextInt();
+        }
+        System.out.println(findlcm(arr));
+        
+    }
+}
